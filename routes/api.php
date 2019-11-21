@@ -23,9 +23,8 @@ Route::post('/login','AuthenticationController@login')->name('login');
 
 Route::middleware('auth:api')->group(function () {
         
-    // Route::get('/users', function () {
-    //     return new UserCollection(User::all());
-    // });
     
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
 });
+
+Route::post('/register_new','AuthenticationController@register')->name('register'); 

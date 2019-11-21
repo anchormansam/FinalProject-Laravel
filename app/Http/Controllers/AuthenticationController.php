@@ -8,6 +8,7 @@ use Lcobucci\JWT\Parser;
 
 use App\User;
 use App\Profile;
+use Hash;
 
 class AuthenticationController extends Controller
 {
@@ -17,11 +18,12 @@ class AuthenticationController extends Controller
         if ($user) {
             if ($user->validateForPassportPasswordGrant($request->password) == $user->password) {
                 $token = $user->createToken("Laravel Password Grant Client")->accessToken;
+                $profile = Profile::where("user_id", $user->id)->get();
+                $user->profile = $profile;
                 $response = [
                     'data' => [
                         'token' => $token, 
-                        'user' => $user->id,
-                        'user_profile' => Profile::where("user_id", $user->id)->get(),
+                        'user' => $user,
                         ],
                     ];
                 return response($response, 200);
@@ -42,5 +44,30 @@ class AuthenticationController extends Controller
 
         $response = 'You have been successfully logged out!';
         return response($response, 200);
+    }
+
+    public function register(Request $request)
+    {
+
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users',
+            'password' =>'required|min:8'
+        ]);
+        
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+            $token = $user->createToken('Token has been created')->accessToken;
+            $response = [
+                'data' => [
+                    'token' => $token, 
+                    'user' => $user->id,
+                    'user_profile' => Profile::where("user_id", $user->id)->get(),
+                    ],
+                ];
+            return response($response, 200);
     }
 }
