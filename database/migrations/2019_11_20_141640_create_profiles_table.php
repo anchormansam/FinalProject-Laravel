@@ -22,6 +22,7 @@ class CreateProfilesTable extends Migration
             $table->text('state');
             $table->integer('zipcode');
             $table->boolean('admin');
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

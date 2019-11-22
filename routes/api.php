@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login','AuthenticationController@login')->name('login');
 
 Route::middleware('auth:api')->group(function () {
+    
+    Route::get('/profile', 'ProfileController@store')->name('profile');
         
     
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');

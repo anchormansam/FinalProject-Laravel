@@ -22,9 +22,17 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        return Profile::create([
+            'user_id' => $request->user_id,
+            'name' => $request->name,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip_code' => $request->zip_code,
+        ]);
     }
 
     /**
@@ -36,6 +44,14 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         //
+        return Profile::create([
+            'user_id' => $request->user_id,
+            'name' => $request->name,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip_code' => $request->zip_code,
+        ]);
     }
 
     /**
