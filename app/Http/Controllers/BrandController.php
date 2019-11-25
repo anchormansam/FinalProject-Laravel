@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Profile;
+use App\Brand;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,17 +22,12 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-
-
-        return Profile::create([ 
-            "user_id" => $request->user()->id, 
-            "address"=>$request->address, 
-            "city" => $request->city, 
-            "state" => $request->state, 
-            "zipcode" => $request->zip_code, 
-            "admin" => 0]);
+        return Brand::create([
+            
+            'brand' => $request->brand,
+        ]);
     }
 
     /**
@@ -43,28 +38,34 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
-       
+      
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Profile  $profile
+     * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show(Brand $brand)
     {
-        //
+        $brand = Brand::all();
+        
+        $response = [
+            'data' => [
+                'brands' => $brand,
+                ],
+            ];
+        return response($response, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Profile  $profile
+     * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit(Brand $brand)
     {
         //
     }
@@ -73,10 +74,10 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Profile  $profile
+     * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, Brand $brand)
     {
         //
     }
@@ -84,10 +85,10 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Profile  $profile
+     * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profile $profile)
+    public function destroy(Brand $brand)
     {
         //
     }

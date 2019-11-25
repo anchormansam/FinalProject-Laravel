@@ -61,8 +61,8 @@ class AuthenticationController extends Controller
             'password' => Hash::make($request->password)
         ]);
             $token = $user->createToken('Token has been created')->accessToken;
-            $profile = Profile::create(["user_id" => $user->id, "name"=>$request->name, "address"=>"Your Address", "city" => "Your City", "state" => "Your State", "zipcode" => "00000", "admin" => 0]);
-            $user->profile = $profile;
+            
+
             $response = [
                 'data' => [
                     'token' => $token, 

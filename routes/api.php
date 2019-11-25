@@ -23,10 +23,17 @@ Route::post('/login','AuthenticationController@login')->name('login');
 
 Route::middleware('auth:api')->group(function () {
     
-    Route::get('/profile', 'ProfileController@store')->name('profile');
-        
+    Route::post('/profile', 'ProfileController@create')->name('profile');
+
     
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
 });
 
 Route::post('/register_new','AuthenticationController@register')->name('register'); 
+
+Route::post('/disc','DiscController@create')->name('createDiscData'); 
+Route::get('/disc', 'DiscController@show')->name('disc');
+
+Route::get('/brand', 'BrandController@show')->name('brand');
+
+Route::get('/plastic', 'PlasticController@show')->name('plastic'); 
