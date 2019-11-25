@@ -22,11 +22,12 @@ class DiscController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        
         $disc = Disc::create([
-            'brand_id' => $request->brand()->id,
-            'plastic_id' => $request->plastic()->id,
+            'brand_id' => $request['brand_id'],
+            'plastic_id' => $request['plastic_id'],
             'name' => $request->name,
             'speed' => $request->speed,
             'turn' => $request->turn,
@@ -50,45 +51,12 @@ class DiscController extends Controller
      */
     public function store(Request $request)
     {
-        // return Disc::create([
-        //     'brand_id' => $request->brand_id,
-        //     'plastic_id' => $request->plastic_id,
-        //     'name' => $request->name,
-        //     'speed' => $request->speed,
-        //     'turn' => $request->turn,
-        //     'fade' => $request->fade,
-        //     'glide' => $request->glide,
-        // ]);
+      
     }
 
     public function createDiscData(Request $request)
     {
 
-        // $this->validate($request, [
-        //     'brand_id' =>
-        //     'plastic_id' =>
-        //     'name' => 'required',
-        //     'speed' => 'required|min:2',
-        //     'turn' =>'required|min:2',
-        //     'fade' =>'required|min:2',
-        //     'glide' =>'required|min:2',
-        // ]);
-        
-        // $disc = Disc::create([
-        //     'name' => $request->name,
-        //     'speed' => $request->name,
-        //     'turn' => $request->name,
-        //     'fade' => $request->name,
-        //     'glide' => $request->name,
-            
-        // ]);
-            
-            // $response = [
-            //     'data' => [
-            //         'disc' => $disc,
-            //         ],
-            //     ];
-            // return response($response, 200);
     }
 
     /**
