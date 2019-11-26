@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     }
 
+    public function CreateBag()
+    {
+        return $this->hasMany('App\CreateBag');
+    }
+
     public function validateForPassportPasswordGrant($password)
     {
         return Hash::check($password, $this->password);

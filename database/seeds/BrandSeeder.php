@@ -17,5 +17,6 @@ class BrandSeeder extends Seeder
         foreach($brands as $brand ){
             Brand::create(['brand'=> $brand]);
         }
+    
     }
 }
