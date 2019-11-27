@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mybag;
+use App\User;
 use Illuminate\Http\Request;
 
 class MybagController extends Controller
@@ -12,9 +13,16 @@ class MybagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $user_id)
     {
-        //
+        $usersBag = Mybag::with('mybagofdiscs')->where('user_id', $user_id)->get();
+
+        //get the user_id
+        // query the Mybag model to get the bags by user id
+        return (
+            $usersBag->toArray()
+        );
+
     }
 
     /**
@@ -58,7 +66,14 @@ class MybagController extends Controller
      */
     public function show(Mybag $mybag)
     {
-        //
+        MyBag::table('users')
+            ->whereExists(function($query)
+            {
+                $query->select(DB::raw(1))
+                      ->from('orders')
+                      ->whereRaw('orders.user_id = users.id');
+            })
+            ->get();
     }
 
     /**

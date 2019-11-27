@@ -16,13 +16,13 @@ class CreateMybagofdiscsTable extends Migration
         Schema::create('mybagofdiscs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('mybags_id');
+            $table->unsignedBigInteger('mybag_id');
             $table->unsignedBigInteger('discs_id');
 
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('mybags_id')->references('id')->on('mybags');
+            $table->foreign('mybag_id')->references('id')->on('mybags');
             $table->foreign('discs_id')->references('id')->on('discs');
 
         });

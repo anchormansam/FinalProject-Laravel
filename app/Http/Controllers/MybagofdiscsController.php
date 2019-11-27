@@ -28,7 +28,7 @@ class MybagofdiscsController extends Controller
             
             'user_id' => $request->user_id,
             'discs_id' => $request->discs_id,
-            'mybags_id' => $request->mybags_id,
+            'mybag_id' => $request->mybags_id,
             
         
         ]);

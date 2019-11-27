@@ -13,8 +13,10 @@ class Mybag extends Model
     public function mybagofdiscs()
     {
 
-        return $this->belongsTo('App\Mybagofdiscs');
+        return $this->hasOne('App\Mybagofdiscs');
     }
+
+
 
 
 }

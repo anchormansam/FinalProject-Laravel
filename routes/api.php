@@ -37,7 +37,7 @@ Route::get('/disc', 'DiscController@show')->name('disc');
 
 
 Route::post('/mybag', 'MybagController@create')->name('createBag');
-Route::get('/mybag', 'MybagController@show')->name('showBag');
+Route::get('/mybag/{id}', 'MybagController@index')->name('showBag');
 
 
 
