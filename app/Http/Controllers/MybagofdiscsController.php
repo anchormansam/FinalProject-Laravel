@@ -22,9 +22,9 @@ class MybagofdiscsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $createdBagOfDiscs = Mybagofdisc::create([
+        $createdBagOfDiscs = Mybagofdiscs::create([
             
             'user_id' => $request->user_id,
             'discs_id' => $request->discs_id,

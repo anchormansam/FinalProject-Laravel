@@ -35,19 +35,11 @@ Route::post('/disc','DiscController@create')->name('createDiscData');
 Route::get('/disc', 'DiscController@show')->name('disc');
 
 
+Route::post('/mybagofdiscs', 'MybagofdiscsController@create')->name('createBagofdiscs');
+Route::get('/mybagofdiscs', 'MybagofdiscsController@show')->name('showBags');
 
 Route::post('/mybag', 'MybagController@create')->name('createBag');
 Route::get('/mybag/{id}', 'MybagController@index')->name('showBag');
-
-
-
-
-
-
-
-
-Route::post('/mybagofdiscs', 'CreateBagController@create')->name('createBags');
-Route::get('/mybagofdiscs', 'CreateBagController@show')->name('showBags');
 
 Route::get('/brand', 'BrandController@show')->name('brand');
 

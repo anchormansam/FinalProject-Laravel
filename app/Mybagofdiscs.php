@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mybagofdiscs extends Model
 {
+    protected $fillable = [
+        'user_id', 'discs_id', 'mybag_id',
+    ];
+
     public function User() 
     {
         
