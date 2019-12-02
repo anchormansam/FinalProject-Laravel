@@ -17,7 +17,7 @@ class Disc extends Model
     }
     public function brand()
     {
-        return $this->hasOne('App\Brand');
+        return $this->belongsTo('App\Brand');
     }
 
 }

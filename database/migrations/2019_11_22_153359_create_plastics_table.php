@@ -15,8 +15,12 @@ class CreatePlasticsTable extends Migration
     {
         Schema::create('plastics', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('brand_id');
             $table->text('plastic');
             $table->timestamps();
+
+            $table->foreign('brand_id')->references('id')->on('brands');
+
         });
     }
 

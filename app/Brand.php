@@ -16,4 +16,5 @@ class Brand extends Model
     {
         return $this->hasOne('App\Disc');
     }
+    
 }

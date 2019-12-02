@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plastic extends Model
 {
+    protected $fillable = [
+        'brand_id',
+    ];
 
     public function disc()
     {

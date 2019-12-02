@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Plastic;
+use App\Brand;
+use Faker\Generator as Faker;
 
 class PlasticSeeder extends Seeder
 {
@@ -11,9 +13,9 @@ class PlasticSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-       
-            $plastics = [
+    {       
+        
+        $plastics = [
             'Unknown',
             // Innova
             'STAR','STARLITE','ECHO','GSTAR','CHAMPION','METAL FLAKE','BLIZZARD',
@@ -28,12 +30,18 @@ class PlasticSeeder extends Seeder
             'Gold Line','Recycled','Frost Line','Hybrid','Moonshine','Opto','Opto Air',
             'Zero Hard','Zero Medium','Zero Soft','Retro',
             
-
-        ];
             
-            foreach($plastics as $plastic ){
-                Plastic::create(['plastic'=> $plastic]);
-            }
+        ];
         
+        foreach($plastics as $plastic ){
+            $brand = Brand::all()->pluck('id')->random();
+        Plastic::create(['plastic'=> $plastic,
+        'brand_id' => $brand
+        ]);
+        
+            }
+                // return [
+                //     'brand_id' => $faker->randomElement($brand),
+                // ];
     }
 }
