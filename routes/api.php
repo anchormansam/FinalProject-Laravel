@@ -34,13 +34,16 @@ Route::post('/register_new','AuthenticationController@register')->name('register
 Route::post('/disc','DiscController@create')->name('createDiscData'); 
 Route::get('/disc', 'DiscController@show')->name('disc');
 
-
-Route::post('/mybagofdiscs', 'MybagofdiscsController@create')->name('createBagofdiscs');
-Route::get('/mybagofdiscs', 'MybagofdiscsController@show')->name('showBags');
-
-Route::post('/mybag', 'MybagController@create')->name('createBag');
-Route::get('/mybag/{id}', 'MybagController@index')->name('showBag');
-
 Route::get('/brand', 'BrandController@show')->name('brand');
 
 Route::get('/plastic', 'PlasticController@show')->name('plastic'); 
+
+Route::post('/mybagofdiscs', 'MybagofdiscsController@create')->name('createBagofdiscs');
+Route::get('/mybagofdiscs/{id}', 'MybagofdiscsController@show')->name('showBags');
+Route::get('/deletediscs/{discs_id}', 'MybagofdiscsController@delete')->name('deleteBagofdiscs');
+
+Route::post('/mybag', 'MybagController@create')->name('createBag');
+Route::get('/mybag/{id}', 'MybagController@index')->name('showBag');
+Route::get('/deletedbag/{mybags_id}', 'MybagController@delete')->name('deleteBag');
+
+

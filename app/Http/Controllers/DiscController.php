@@ -27,7 +27,9 @@ class DiscController extends Controller
         
         $disc = Disc::create([
             'brand_id' => $request->brand_id,
+            'brand' => $request->brand,
             'plastic_id' => $request->plastic_id,
+            'plastic' => $request->plastic,
             'name' => $request->name,
             'speed' => $request->speed,
             'turn' => $request->turn,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mybag;
 use App\User;
+use App\Mybagofdiscs;
 use Illuminate\Http\Request;
 
 class MybagController extends Controller
@@ -105,8 +106,15 @@ class MybagController extends Controller
      * @param  \App\Mybag  $mybag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mybag $mybag)
+    public function delete($mybags_id)
     {
-        //
+        
+        $bag = Mybagofdiscs::where('mybag_id','=', $mybags_id)->delete();
+        $deletedItem = Mybag::destroy($mybags_id);
+        
+        $response = [
+            "data" => "Item " . $mybags_id . " has been deleted",
+        ];
+        return $response;
     }
 }

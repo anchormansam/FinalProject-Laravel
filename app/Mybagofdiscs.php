@@ -20,10 +20,15 @@ class Mybagofdiscs extends Model
     public function Mybag() 
     {
         
-        return $this->hasMany('App\Mybag');
+        return $this->belongsTo('App\Mybag');
 
     } 
 
+    public function discs() 
+    {
+        
+        return $this->belongsTo('App\Disc');
 
+    } 
         
 }

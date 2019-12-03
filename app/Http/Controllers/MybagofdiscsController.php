@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Mybagofdiscs;
+use App\Brand;
+use App\Plastic;
+use App\Disc;
 use Illuminate\Http\Request;
 
 class MybagofdiscsController extends Controller
@@ -58,9 +61,17 @@ class MybagofdiscsController extends Controller
      * @param  \App\Mybagofdiscs  $mybagofdiscs
      * @return \Illuminate\Http\Response
      */
-    public function show(Mybagofdiscs $mybagofdiscs)
+    public function show($uid)
     {
-        //
+        $discs = Mybagofdiscs::where("user_id", "=", $uid)->with('user', 'discs', 'Mybag')->get();
+        foreach($discs as $disc){
+
+            $disc->disc = Disc::where("id", "=", $disc->discs_id)->get();
+            $disc->brand = Brand::where("id", "=", $disc->disc[0]->brand_id)->get();
+            $disc->plastic = Plastic::where("id", "=", $disc->disc[0]->plastic_id)->get();
+        }
+
+        return $discs;
     }
 
     /**
@@ -92,8 +103,12 @@ class MybagofdiscsController extends Controller
      * @param  \App\Mybagofdiscs  $mybagofdiscs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mybagofdiscs $mybagofdiscs)
+    public function delete($disc_id)
     {
-        //
+        $deletedItem = Mybagofdiscs::where('discs_id', $disc_id)->delete();
+        $response = [
+            "data" => "Item " . $disc_id . " has been deleted",
+        ];
+        return $response;
     }
 }
