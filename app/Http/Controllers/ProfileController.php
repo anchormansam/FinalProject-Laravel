@@ -12,9 +12,13 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        $usersProfile = Profile::where('user_id', $user_id)->get();
+
+        return (
+            $usersProfile->toArray()
+        );
     }
 
     /**
